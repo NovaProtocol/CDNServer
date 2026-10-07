@@ -1,0 +1,16 @@
+# CDNServer gateway. Gating lives in GateKeeper (routes + rules), not here:
+# zero forward_auth. cdn.projectnova.download is a `none` rule for assets/landing
+# and a `custom_password` rule for /manage.
+:7080 {
+    handle /health {
+        reverse_proxy cdn_main:7081
+    }
+
+    handle_path /documentation/* {
+        reverse_proxy cdn_documentation:8005
+    }
+
+    handle {
+        reverse_proxy cdn_main:7081
+    }
+}

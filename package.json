@@ -1,0 +1,13 @@
+{
+  "name": "cdnserver",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tailwind build for the CDNServer dashboard templates.",
+  "scripts": {
+    "build": "tailwindcss -i ./static/src/input.css -o ./static/css/app.css --minify",
+    "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

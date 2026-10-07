@@ -1,0 +1,12 @@
+/* Badge. */
+.ui-badge {
+  display: inline-block;
+  font: 600 11px/16px var(--ui-font-mono);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--ui-surface-variant);
+  color: var(--ui-on-surface-variant);
+}
+.ui-badge--success { background: color-mix(in srgb, var(--ui-success) 18%, transparent); color: var(--ui-success); }
+.ui-badge--warn { background: color-mix(in srgb, var(--ui-warning) 18%, transparent); color: var(--ui-warning); }
+.ui-badge--danger { background: color-mix(in srgb, var(--ui-error) 18%, transparent); color: var(--ui-error); }

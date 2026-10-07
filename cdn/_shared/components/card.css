@@ -1,0 +1,18 @@
+/* Card — surface + elevation, never a border. */
+.ui-card {
+  background: var(--ui-surface);
+  color: var(--ui-on-surface);
+  border-radius: var(--ui-radius);
+  box-shadow: var(--ui-elev-1);
+  overflow: hidden;
+}
+.ui-card__header {
+  padding: 16px;
+  border-bottom: 1px solid var(--ui-outline);
+  font: 600 16px/24px var(--ui-font-body);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ui-card__body { padding: 16px; }
+.ui-card__footer { padding: 12px 16px; border-top: 1px solid var(--ui-outline); }

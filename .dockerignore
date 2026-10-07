@@ -1,0 +1,15 @@
+.venv/
+venv/
+.git/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.db
+*.sqlite3
+.mypy_cache/
+.pytest_cache/
+node_modules/
+data/
+documentation/site/
+*.code-workspace

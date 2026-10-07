@@ -1,0 +1,20 @@
+/* Field + input. */
+.ui-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.ui-field__label {
+  font: 600 12px/16px var(--ui-font-body);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ui-on-surface-variant);
+}
+.ui-field__help { font: 400 12px/16px var(--ui-font-body); color: var(--ui-on-surface-variant); }
+.ui-input {
+  background: var(--ui-surface);
+  color: var(--ui-on-surface);
+  border: 1px solid var(--ui-outline);
+  border-radius: var(--ui-radius);
+  padding: 12px 16px;
+  font: 400 14px/20px var(--ui-font-body);
+  outline: none;
+  transition: border-color var(--ui-duration) var(--ui-ease);
+}
+.ui-input:focus { border-color: var(--ui-primary); box-shadow: 0 0 0 1px var(--ui-primary); }

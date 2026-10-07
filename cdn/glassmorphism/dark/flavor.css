@@ -1,0 +1,22 @@
+/* Glassmorphism flavor — frosted translucent surfaces + backdrop blur. */
+.ui-card {
+  background: color-mix(in srgb, var(--ui-surface) 60%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--ui-outline);
+  box-shadow: var(--ui-elev-2);
+}
+.ui-btn {
+  background: color-mix(in srgb, var(--ui-surface-variant) 55%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+}
+.ui-input,
+.ui-select {
+  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+.ui-badge { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }

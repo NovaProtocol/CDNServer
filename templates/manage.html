@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}CDNServer — manage{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-2">Manage</h1>
+<p class="mb-8 text-sm" style="color: var(--ui-on-surface-variant);">
+  Gated by GateKeeper (a <code>custom_password</code> rule on <code>/manage</code>), not by this app.
+</p>
+
+<h2 class="text-lg font-semibold mb-3">Theme parity</h2>
+<div class="ui-alert {{ 'ui-alert--info' if parity.ok else 'ui-alert--error' }} mb-6">
+  {% if parity.ok %}PASS — every main kit matches the schema ({{ parity.expected_count }} classes).{% else %}FAIL — a kit is missing or has extra classes.{% endif %}
+</div>
+<div class="ui-card mb-10">
+  <table class="ui-table">
+    <thead><tr><th>Kit</th><th>Components</th><th>Missing</th><th>Extra</th></tr></thead>
+    <tbody>
+      {% for kit, r in parity.results.items() %}
+      <tr>
+        <td><code>{{ kit }}</code></td>
+        <td>{{ r.components if r.components is defined else '—' }}</td>
+        <td>{{ r.missing | join(', ') if r.missing else '—' }}</td>
+        <td>{{ r.extra | join(', ') if r.extra else '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2 class="text-lg font-semibold mb-3">Rehosted assets</h2>
+<div class="ui-card">
+  <table class="ui-table ui-table--striped">
+    <thead><tr><th>Name</th><th>Current</th><th>Latest</th><th>Path</th><th></th></tr></thead>
+    <tbody>
+      {% for a in assets %}
+      <tr>
+        <td><code>{{ a.name }}</code></td>
+        <td>{{ a.current_version }}</td>
+        <td>{{ a.latest_version or '—' }}</td>
+        <td><code>{{ a.path }}</code></td>
+        <td>
+          <button class="ui-btn ui-btn--outline" onclick="refreshAsset({{ a.id }}, this)">Refresh</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  async function refreshAsset(id, btn) {
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const res = await fetch(`/api/assets/${id}/refresh`, { method: 'POST' });
+      const body = await res.json();
+      if (!res.ok) throw new Error(body?.error?.message || res.statusText);
+      btn.textContent = 'Done';
+    } catch (err) {
+      console.error({ message: err.message, url: `/api/assets/${id}/refresh`, requestId: (await res?.headers?.get?.('X-Request-ID')) });
+      btn.textContent = 'Failed';
+    }
+  }
+</script>
+{% endblock %}

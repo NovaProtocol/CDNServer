@@ -1,0 +1,11 @@
+/* Select. */
+.ui-select {
+  background: var(--ui-surface);
+  color: var(--ui-on-surface);
+  border: 1px solid var(--ui-outline);
+  border-radius: var(--ui-radius);
+  padding: 12px 16px;
+  font: 400 14px/20px var(--ui-font-body);
+  outline: none;
+}
+.ui-select:focus { border-color: var(--ui-primary); }

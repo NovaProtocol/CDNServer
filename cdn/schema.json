@@ -1,0 +1,20 @@
+{
+  "comment": "The parity contract: every main design language/theme must expose exactly these classes (a theme switch is a single <link> change). custom-* kits are exempt.",
+  "tokens": [
+    "primary", "on-primary", "primary-container", "on-primary-container",
+    "surface", "on-surface", "surface-variant", "on-surface-variant", "outline",
+    "error", "on-error", "success", "warning", "info",
+    "elev-1", "elev-2", "elev-3", "elev-4", "radius", "duration", "ease",
+    "font-body", "font-mono"
+  ],
+  "components": [
+    { "name": "button", "classes": ["ui-btn", "ui-btn--primary", "ui-btn--outline", "ui-btn--ghost", "ui-btn--danger"] },
+    { "name": "card", "classes": ["ui-card", "ui-card__header", "ui-card__body", "ui-card__footer"] },
+    { "name": "input", "classes": ["ui-field", "ui-field__label", "ui-field__help", "ui-input"] },
+    { "name": "select", "classes": ["ui-select"] },
+    { "name": "table", "classes": ["ui-table", "ui-table--striped"] },
+    { "name": "badge", "classes": ["ui-badge", "ui-badge--success", "ui-badge--warn", "ui-badge--danger"] },
+    { "name": "alert", "classes": ["ui-alert", "ui-alert--info", "ui-alert--error"] },
+    { "name": "tabs", "classes": ["ui-tabs", "ui-tab", "ui-tab--active"] }
+  ]
+}

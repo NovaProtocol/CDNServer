@@ -1,0 +1,42 @@
+{
+  "language": "neomorphism",
+  "theme": "light",
+  "components": [
+    "alert.css",
+    "badge.css",
+    "button.css",
+    "card.css",
+    "input.css",
+    "select.css",
+    "table.css",
+    "tabs.css"
+  ],
+  "classes": [
+    "ui-alert",
+    "ui-alert--error",
+    "ui-alert--info",
+    "ui-badge",
+    "ui-badge--danger",
+    "ui-badge--success",
+    "ui-badge--warn",
+    "ui-btn",
+    "ui-btn--danger",
+    "ui-btn--ghost",
+    "ui-btn--outline",
+    "ui-btn--primary",
+    "ui-card",
+    "ui-card__body",
+    "ui-card__footer",
+    "ui-card__header",
+    "ui-field",
+    "ui-field__help",
+    "ui-field__label",
+    "ui-input",
+    "ui-select",
+    "ui-tab",
+    "ui-tab--active",
+    "ui-table",
+    "ui-table--striped",
+    "ui-tabs"
+  ]
+}

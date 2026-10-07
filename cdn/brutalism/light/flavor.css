@@ -1,0 +1,20 @@
+/* Brutalism flavor — hard borders, offset hard shadows, zero radius, no easing. */
+.ui-btn,
+.ui-btn--primary,
+.ui-btn--outline,
+.ui-btn--ghost,
+.ui-btn--danger {
+  border: 2px solid var(--ui-on-surface);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--ui-on-surface);
+}
+.ui-btn:hover { box-shadow: 2px 2px 0 var(--ui-on-surface); }
+.ui-card { border: 2px solid var(--ui-on-surface); border-radius: 0; box-shadow: 6px 6px 0 var(--ui-on-surface); }
+.ui-input,
+.ui-select { border: 2px solid var(--ui-on-surface); border-radius: 0; }
+.ui-badge { border: 2px solid var(--ui-on-surface); border-radius: 0; }
+.ui-alert { border: 2px solid var(--ui-on-surface); border-radius: 0; }
+.ui-tabs { border-bottom: 2px solid var(--ui-on-surface); }
+.ui-tab--active { border-bottom-color: var(--ui-primary); }
+.ui-table th,
+.ui-table td { border-bottom: 2px solid var(--ui-on-surface); }

@@ -1,0 +1,11 @@
+/* Alert. */
+.ui-alert {
+  padding: 12px 16px;
+  border-radius: var(--ui-radius);
+  border: 1px solid var(--ui-outline);
+  background: var(--ui-surface-variant);
+  color: var(--ui-on-surface-variant);
+  font: 400 14px/20px var(--ui-font-body);
+}
+.ui-alert--info { border-color: var(--ui-info); color: var(--ui-info); }
+.ui-alert--error { border-color: var(--ui-error); color: var(--ui-error); }

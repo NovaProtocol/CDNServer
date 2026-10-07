@@ -1,0 +1,27 @@
+:root {
+  --ui-primary: #8b7cff;
+  --ui-on-primary: #1b1730;
+  --ui-primary-container: #3a3363;
+  --ui-on-primary-container: #e6e3ff;
+  --ui-surface: #2b2f3a;
+  --ui-on-surface: #d7dbe4;
+  --ui-surface-variant: #242833;
+  --ui-on-surface-variant: #a3abbd;
+  --ui-outline: rgba(215, 219, 228, 0.08);
+  --ui-error: #f08a86;
+  --ui-on-error: #3a1412;
+  --ui-success: #6fd3a3;
+  --ui-warning: #f0bd63;
+  --ui-info: #7fb6e6;
+
+  --ui-elev-1: 6px 6px 12px rgba(0, 0, 0, 0.55), -6px -6px 12px rgba(255, 255, 255, 0.04);
+  --ui-elev-2: 8px 8px 18px rgba(0, 0, 0, 0.55), -8px -8px 18px rgba(255, 255, 255, 0.05);
+  --ui-elev-3: 10px 10px 22px rgba(0, 0, 0, 0.6), -10px -10px 22px rgba(255, 255, 255, 0.05);
+  --ui-elev-4: 14px 14px 28px rgba(0, 0, 0, 0.65), -14px -14px 28px rgba(255, 255, 255, 0.06);
+
+  --ui-radius: 18px;
+  --ui-duration: 200ms;
+  --ui-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}

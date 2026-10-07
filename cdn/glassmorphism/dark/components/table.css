@@ -1,0 +1,13 @@
+/* Table — rows separated by dividers, header on surface-variant. */
+.ui-table { width: 100%; border-collapse: collapse; font: 400 14px/20px var(--ui-font-body); color: var(--ui-on-surface); }
+.ui-table th {
+  text-align: left;
+  font: 600 12px/16px var(--ui-font-body);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ui-on-surface-variant);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ui-outline);
+}
+.ui-table td { padding: 12px 16px; border-bottom: 1px solid var(--ui-outline); }
+.ui-table--striped tbody tr:nth-child(odd) { background: var(--ui-surface-variant); }

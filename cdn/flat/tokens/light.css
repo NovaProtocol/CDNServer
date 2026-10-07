@@ -1,0 +1,27 @@
+:root {
+  --ui-primary: #2563eb;
+  --ui-on-primary: #ffffff;
+  --ui-primary-container: #dbeafe;
+  --ui-on-primary-container: #1e3a8a;
+  --ui-surface: #ffffff;
+  --ui-on-surface: #0f172a;
+  --ui-surface-variant: #f1f5f9;
+  --ui-on-surface-variant: #475569;
+  --ui-outline: #cbd5e1;
+  --ui-error: #dc2626;
+  --ui-on-error: #ffffff;
+  --ui-success: #16a34a;
+  --ui-warning: #d97706;
+  --ui-info: #0284c7;
+
+  --ui-elev-1: 0 1px 2px rgba(15,23,42,.08), 0 1px 3px rgba(15,23,42,.06);
+  --ui-elev-2: 0 2px 4px rgba(15,23,42,.08), 0 3px 8px rgba(15,23,42,.06);
+  --ui-elev-3: 0 4px 8px rgba(15,23,42,.08), 0 6px 14px rgba(15,23,42,.06);
+  --ui-elev-4: 0 8px 16px rgba(15,23,42,.08), 0 12px 24px rgba(15,23,42,.06);
+
+  --ui-radius: 12px;
+  --ui-duration: 160ms;
+  --ui-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}

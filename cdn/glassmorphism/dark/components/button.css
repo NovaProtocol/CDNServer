@@ -1,0 +1,21 @@
+/* Button — theme-neutral: every value resolves through --ui-* tokens. */
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 14px/20px var(--ui-font-body);
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius);
+  background: var(--ui-surface-variant);
+  color: var(--ui-on-surface-variant);
+  box-shadow: var(--ui-elev-1);
+  cursor: pointer;
+  transition: box-shadow var(--ui-duration) var(--ui-ease), transform var(--ui-duration) var(--ui-ease);
+}
+.ui-btn:hover { box-shadow: var(--ui-elev-2); }
+.ui-btn:active { transform: translateY(1px); }
+.ui-btn--primary { background: var(--ui-primary); color: var(--ui-on-primary); }
+.ui-btn--outline { background: transparent; color: var(--ui-primary); border-color: var(--ui-outline); box-shadow: none; }
+.ui-btn--ghost { background: transparent; color: var(--ui-on-surface); box-shadow: none; }
+.ui-btn--danger { background: var(--ui-error); color: var(--ui-on-error); }

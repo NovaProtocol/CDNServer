@@ -1,0 +1,10 @@
+/* Tabs. */
+.ui-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--ui-outline); }
+.ui-tab {
+  padding: 10px 16px;
+  font: 600 13px/18px var(--ui-font-body);
+  color: var(--ui-on-surface-variant);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.ui-tab--active { color: var(--ui-primary); border-bottom-color: var(--ui-primary); }

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}CDNServer — kits{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-2">CDNServer</h1>
+<p class="mb-8" style="color: var(--ui-on-surface-variant);">
+  The single source of truth for shared front-end CSS and rehosted assets on <code>*.projectnova.download</code>.
+</p>
+
+<h2 class="text-lg font-semibold mb-3">Design-language kits</h2>
+<p class="mb-3 text-sm" style="color: var(--ui-on-surface-variant);">
+  Every kit exposes the same classes, so a theme switch is one <code>&lt;link&gt;</code>.
+</p>
+<div class="ui-card mb-10">
+  <table class="ui-table ui-table--striped">
+    <thead><tr><th>Language</th><th>Theme</th><th>Components</th><th>Endpoint</th></tr></thead>
+    <tbody>
+      {% for e in endpoints %}
+      <tr>
+        <td>{{ e.language }}</td>
+        <td>{{ e.theme }}</td>
+        <td>{{ e.components }}</td>
+        <td><a href="{{ e.theme_css }}"><code>{{ e.theme_css }}</code></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2 class="text-lg font-semibold mb-3">Rehosted assets</h2>
+<div class="ui-card mb-10">
+  <table class="ui-table">
+    <thead><tr><th>Name</th><th>Kind</th><th>Version</th><th>Upstream</th></tr></thead>
+    <tbody>
+      {% for a in assets %}
+      <tr>
+        <td><code>{{ a.name }}</code></td>
+        <td><span class="ui-badge">{{ a.kind }}</span></td>
+        <td>{{ a.current_version }}</td>
+        <td><a href="{{ a.upstream_url }}">source</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if custom %}
+<h2 class="text-lg font-semibold mb-3">Project kits</h2>
+<p class="text-sm" style="color: var(--ui-on-surface-variant);">
+  Deliberate one-offs, excluded from parity + upstream tracking:
+  {% for c in custom %}<code>/{{ c }}/</code>{% if not loop.last %}, {% endif %}{% endfor %}
+</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+/* Material flavor — state layers on primary actions (degrades without JS). */
+.ui-btn--primary { position: relative; overflow: hidden; }
+.ui-btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ui-on-primary);
+  opacity: 0;
+  transition: opacity var(--ui-duration) var(--ui-ease);
+}
+.ui-btn--primary:hover::after { opacity: .08; }
+.ui-btn--primary:focus-visible::after { opacity: .12; }
