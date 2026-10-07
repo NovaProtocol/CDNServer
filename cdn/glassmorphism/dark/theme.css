@@ -1,10 +1,89 @@
-@import url('./tokens.css');
-@import url('./flavor.css');
-@import url('./components/alert.css');
-@import url('./components/badge.css');
-@import url('./components/button.css');
-@import url('./components/card.css');
-@import url('./components/input.css');
-@import url('./components/select.css');
-@import url('./components/table.css');
-@import url('./components/tabs.css');
+@import url('./components/alert.css?v=4');
+@import url('./components/badge.css?v=4');
+@import url('./components/button.css?v=4');
+@import url('./components/card.css?v=4');
+@import url('./components/footer.css?v=4');
+@import url('./components/input.css?v=4');
+@import url('./components/navbar.css?v=4');
+@import url('./components/select.css?v=4');
+@import url('./components/table.css?v=4');
+@import url('./components/tabs.css?v=4');
+:root {
+  --ui-primary: #a5b4fc;
+  --ui-on-primary: #1e1b4b;
+  --ui-primary-container: #4338ca;
+  --ui-on-primary-container: #e0e7ff;
+  --ui-surface: #0b1020;
+  --ui-on-surface: #e0e7ff;
+  --ui-surface-variant: #161c33;
+  --ui-on-surface-variant: #a5b4fc;
+  --ui-outline: rgba(224, 231, 255, 0.20);
+  --ui-error: #fb7185;
+  --ui-on-error: #450a0a;
+  --ui-success: #34d399;
+  --ui-warning: #fbbf24;
+  --ui-info: #38bdf8;
+
+  --ui-elev-1: 0 2px 12px rgba(0, 0, 0, 0.5);
+  --ui-elev-2: 0 6px 24px rgba(0, 0, 0, 0.55);
+  --ui-elev-3: 0 10px 32px rgba(0, 0, 0, 0.6);
+  --ui-elev-4: 0 16px 44px rgba(0, 0, 0, 0.65);
+
+  --ui-radius: 16px;
+  --ui-duration: 220ms;
+  --ui-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="light"] {
+  --ui-primary: #4f46e5;
+  --ui-on-primary: #ffffff;
+  --ui-primary-container: #c7d2fe;
+  --ui-on-primary-container: #1e1b4b;
+  --ui-surface: #eef2ff;
+  --ui-on-surface: #1e1b4b;
+  --ui-surface-variant: #e0e7ff;
+  --ui-on-surface-variant: #4338ca;
+  --ui-outline: rgba(30, 27, 75, 0.18);
+  --ui-error: #e11d48;
+  --ui-on-error: #ffffff;
+  --ui-success: #059669;
+  --ui-warning: #d97706;
+  --ui-info: #0284c7;
+
+  --ui-elev-1: 0 2px 12px rgba(30, 27, 75, 0.12);
+  --ui-elev-2: 0 6px 24px rgba(30, 27, 75, 0.16);
+  --ui-elev-3: 0 10px 32px rgba(30, 27, 75, 0.20);
+  --ui-elev-4: 0 16px 44px rgba(30, 27, 75, 0.24);
+
+  --ui-radius: 16px;
+  --ui-duration: 220ms;
+  --ui-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Glassmorphism flavor — frosted translucent surfaces + backdrop blur. */
+.ui-card {
+  background: color-mix(in srgb, var(--ui-surface) 60%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--ui-outline);
+  box-shadow: var(--ui-elev-2);
+}
+.ui-btn {
+  background: color-mix(in srgb, var(--ui-surface-variant) 55%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+}
+.ui-input,
+.ui-select {
+  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+.ui-badge { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+

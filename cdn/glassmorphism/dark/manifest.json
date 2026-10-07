@@ -6,7 +6,9 @@
     "badge.css",
     "button.css",
     "card.css",
+    "footer.css",
     "input.css",
+    "navbar.css",
     "select.css",
     "table.css",
     "tabs.css"
@@ -31,12 +33,22 @@
     "ui-field",
     "ui-field__help",
     "ui-field__label",
+    "ui-footer",
+    "ui-footer__inner",
     "ui-input",
+    "ui-navbar",
+    "ui-navbar__brand",
+    "ui-navbar__inner",
+    "ui-navbar__lead",
+    "ui-navbar__link",
+    "ui-navbar__links",
+    "ui-navbar__right",
     "ui-select",
     "ui-tab",
     "ui-tab--active",
     "ui-table",
     "ui-table--striped",
-    "ui-tabs"
+    "ui-tabs",
+    "ui-theme-toggle"
   ]
 }

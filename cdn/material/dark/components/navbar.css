@@ -1,0 +1,99 @@
+/* Canonical top navigation — IDENTICAL geometry on every site.
+   A fixed grid: [lead slot 28px] [brand] [spacer] [right]. The lead slot is
+   always present (empty = invisible), so the brand lands on the same pixel
+   whether or not a site has a leading button. */
+.ui-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 56px;
+  background: color-mix(in srgb, var(--ui-surface) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ui-outline);
+}
+.ui-navbar__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: grid;
+  grid-template-columns: 28px auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.ui-navbar__lead {
+  grid-column: 1;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--ui-on-surface-variant);
+  font-size: 15px;
+}
+.ui-navbar__lead[hidden] { visibility: hidden; }
+.ui-navbar__brand {
+  grid-column: 2;
+  font: 700 15px/1 var(--ui-font-mono);
+  letter-spacing: -0.01em;
+  color: var(--ui-on-surface);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ui-navbar__brand span { color: var(--ui-primary); }
+.ui-navbar__right {
+  grid-column: 4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ui-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ui-navbar__link {
+  font: 500 13px/1 var(--ui-font-body);
+  color: var(--ui-on-surface-variant);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: color var(--ui-duration) var(--ui-ease), background var(--ui-duration) var(--ui-ease);
+  white-space: nowrap;
+}
+.ui-navbar__link:hover {
+  color: var(--ui-on-surface);
+  background: color-mix(in srgb, var(--ui-on-surface) 6%, transparent);
+}
+/* Light/dark switch — the MELEReview switch, promoted to the shared shell. */
+.ui-theme-toggle {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid var(--ui-outline);
+  background: var(--ui-surface-variant);
+  cursor: pointer;
+  padding: 0;
+}
+.ui-theme-toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ui-primary);
+  transition: transform var(--ui-duration) var(--ui-ease);
+}
+[data-theme="light"] .ui-theme-toggle::after { transform: translateX(20px); }

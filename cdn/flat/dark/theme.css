@@ -1,10 +1,70 @@
-@import url('./tokens.css');
-@import url('./flavor.css');
-@import url('./components/alert.css');
-@import url('./components/badge.css');
-@import url('./components/button.css');
-@import url('./components/card.css');
-@import url('./components/input.css');
-@import url('./components/select.css');
-@import url('./components/table.css');
-@import url('./components/tabs.css');
+@import url('./components/alert.css?v=4');
+@import url('./components/badge.css?v=4');
+@import url('./components/button.css?v=4');
+@import url('./components/card.css?v=4');
+@import url('./components/footer.css?v=4');
+@import url('./components/input.css?v=4');
+@import url('./components/navbar.css?v=4');
+@import url('./components/select.css?v=4');
+@import url('./components/table.css?v=4');
+@import url('./components/tabs.css?v=4');
+:root {
+  --ui-primary: #64ffda;
+  --ui-on-primary: #0a0a0f;
+  --ui-primary-container: #13332e;
+  --ui-on-primary-container: #b9fff0;
+  --ui-surface: #0a0a0f;
+  --ui-on-surface: #e8e8f0;
+  --ui-surface-variant: #1a1a28;
+  --ui-on-surface-variant: #8888a0;
+  --ui-outline: #2a2a3e;
+  --ui-error: #f87171;
+  --ui-on-error: #1a0a0a;
+  --ui-success: #4ade80;
+  --ui-warning: #fbbf24;
+  --ui-info: #38bdf8;
+
+  --ui-elev-1: 0 1px 2px rgba(0,0,0,.5);
+  --ui-elev-2: 0 2px 6px rgba(0,0,0,.5);
+  --ui-elev-3: 0 4px 12px rgba(0,0,0,.55);
+  --ui-elev-4: 0 8px 20px rgba(0,0,0,.6);
+
+  --ui-radius: 10px;
+  --ui-duration: 180ms;
+  --ui-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="light"] {
+  --ui-primary: #0f766e;
+  --ui-on-primary: #ffffff;
+  --ui-primary-container: #ccfbf1;
+  --ui-on-primary-container: #04211e;
+  --ui-surface: #ffffff;
+  --ui-on-surface: #0a0a0f;
+  --ui-surface-variant: #f4f4f6;
+  --ui-on-surface-variant: #5b5b6b;
+  --ui-outline: #e2e2e8;
+  --ui-error: #dc2626;
+  --ui-on-error: #ffffff;
+  --ui-success: #16a34a;
+  --ui-warning: #d97706;
+  --ui-info: #0284c7;
+
+  --ui-elev-1: 0 1px 2px rgba(10,10,15,.08);
+  --ui-elev-2: 0 2px 6px rgba(10,10,15,.10);
+  --ui-elev-3: 0 4px 12px rgba(10,10,15,.12);
+  --ui-elev-4: 0 8px 20px rgba(10,10,15,.14);
+
+  --ui-radius: 10px;
+  --ui-duration: 180ms;
+  --ui-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Flat flavor — flat fills, one soft shadow, no state-layer tricks. */
+.ui-btn--primary { box-shadow: var(--ui-elev-1); }
+.ui-card { box-shadow: var(--ui-elev-1); }
+

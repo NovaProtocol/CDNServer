@@ -1,10 +1,79 @@
-@import url('./tokens.css');
-@import url('./flavor.css');
-@import url('./components/alert.css');
-@import url('./components/badge.css');
-@import url('./components/button.css');
-@import url('./components/card.css');
-@import url('./components/input.css');
-@import url('./components/select.css');
-@import url('./components/table.css');
-@import url('./components/tabs.css');
+@import url('./components/alert.css?v=4');
+@import url('./components/badge.css?v=4');
+@import url('./components/button.css?v=4');
+@import url('./components/card.css?v=4');
+@import url('./components/footer.css?v=4');
+@import url('./components/input.css?v=4');
+@import url('./components/navbar.css?v=4');
+@import url('./components/select.css?v=4');
+@import url('./components/table.css?v=4');
+@import url('./components/tabs.css?v=4');
+:root {
+  --ui-primary: #d0bcff;
+  --ui-on-primary: #381e72;
+  --ui-primary-container: #4f378b;
+  --ui-on-primary-container: #eaddff;
+  --ui-surface: #141218;
+  --ui-on-surface: #e6e0e9;
+  --ui-surface-variant: #49454f;
+  --ui-on-surface-variant: #cac4d0;
+  --ui-outline: #938f99;
+  --ui-error: #f2b8b5;
+  --ui-on-error: #601410;
+  --ui-success: #7bd88f;
+  --ui-warning: #ffb77c;
+  --ui-info: #7fcfff;
+
+  --ui-elev-1: 0 1px 2px rgba(0,0,0,.55), 0 1px 3px 1px rgba(0,0,0,.35);
+  --ui-elev-2: 0 1px 2px rgba(0,0,0,.55), 0 2px 6px 2px rgba(0,0,0,.35);
+  --ui-elev-3: 0 4px 8px 3px rgba(0,0,0,.35), 0 1px 3px rgba(0,0,0,.55);
+  --ui-elev-4: 0 6px 10px 4px rgba(0,0,0,.35), 0 2px 3px rgba(0,0,0,.55);
+
+  --ui-radius: 10px;
+  --ui-duration: 200ms;
+  --ui-ease: cubic-bezier(0.2, 0, 0, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="light"] {
+  --ui-primary: #6750a4;
+  --ui-on-primary: #ffffff;
+  --ui-primary-container: #eaddff;
+  --ui-on-primary-container: #21005d;
+  --ui-surface: #fef7ff;
+  --ui-on-surface: #1d1b20;
+  --ui-surface-variant: #e7e0ec;
+  --ui-on-surface-variant: #49454f;
+  --ui-outline: #79747e;
+  --ui-error: #b3261e;
+  --ui-on-error: #ffffff;
+  --ui-success: #2e7d32;
+  --ui-warning: #ed6c02;
+  --ui-info: #0288d1;
+
+  --ui-elev-1: 0 1px 2px rgba(0,0,0,.30), 0 1px 3px 1px rgba(0,0,0,.15);
+  --ui-elev-2: 0 1px 2px rgba(0,0,0,.30), 0 2px 6px 2px rgba(0,0,0,.15);
+  --ui-elev-3: 0 4px 8px 3px rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.30);
+  --ui-elev-4: 0 6px 10px 4px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.30);
+
+  --ui-radius: 10px;
+  --ui-duration: 200ms;
+  --ui-ease: cubic-bezier(0.2, 0, 0, 1);
+  --ui-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Material flavor — state layers on primary actions (degrades without JS). */
+.ui-btn--primary { position: relative; overflow: hidden; }
+.ui-btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ui-on-primary);
+  opacity: 0;
+  transition: opacity var(--ui-duration) var(--ui-ease);
+}
+.ui-btn--primary:hover::after { opacity: .08; }
+.ui-btn--primary:focus-visible::after { opacity: .12; }
+

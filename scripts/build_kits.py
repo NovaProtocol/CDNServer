@@ -61,11 +61,15 @@ def build() -> int:
             for name, css in component_css.items():
                 (out / "components" / name).write_text(css)
 
-            imports = "".join(f"@import url('./components/{n}');\n" for n in components)
-            bundle = "@import url('./tokens.css');\n"
+            imports = "".join(f"@import url('./components/{n}?v=4');\n" for n in components)
+            dark_css = (tokens_dir / "dark.css").read_text() if (tokens_dir / "dark.css").exists() else tokens.read_text()
+            light_path = tokens_dir / "light.css"
+            light_css = light_path.read_text() if light_path.exists() else ""
+            light_scoped = light_css.replace(":root", '[data-theme="light"]', 1)
+            # @import must precede all rules or the browser drops it.
+            bundle = imports + dark_css + "\n" + light_scoped + "\n"
             if flavor:
-                bundle += "@import url('./flavor.css');\n"
-            bundle += imports
+                bundle += flavor + "\n"
             (out / "theme.css").write_text(bundle)
 
             classes = set()
