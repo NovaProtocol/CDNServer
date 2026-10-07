@@ -29,13 +29,14 @@
 <h2 class="text-lg font-semibold mb-3">Rehosted assets</h2>
 <div class="ui-card mb-10">
   <table class="ui-table">
-    <thead><tr><th>Name</th><th>Kind</th><th>Version</th><th>Upstream</th></tr></thead>
+    <thead><tr><th>Name</th><th>Kind</th><th>Version</th><th>Use this URL</th><th>Upstream</th></tr></thead>
     <tbody>
       {% for a in assets %}
       <tr>
         <td><code>{{ a.name }}</code></td>
         <td><span class="ui-badge">{{ a.kind }}</span></td>
         <td>{{ a.current_version }}</td>
+        <td><a href="/vendor/{{ a.path }}"><code>/vendor/{{ a.path }}</code></a></td>
         <td><a href="{{ a.upstream_url }}">source</a></td>
       </tr>
       {% endfor %}

@@ -6,6 +6,27 @@
   Gated by GateKeeper (a <code>custom_password</code> rule on <code>/manage</code>), not by this app.
 </p>
 
+<h2 class="text-lg font-semibold mb-3">Add an asset</h2>
+<p class="mb-3 text-sm" style="color: var(--ui-on-surface-variant);">
+  Paste any JS/CSS/font URL — it is rehosted here and you get a stable link to use from your other projects.
+</p>
+<div class="ui-card mb-10">
+  <div class="ui-card__body">
+    <form id="add-asset" class="ui-form" onsubmit="return addAsset(event)">
+      <div class="ui-field">
+        <label class="ui-field__label" for="asset-url">Upstream URL</label>
+        <input class="ui-input" id="asset-url" type="url" placeholder="https://cdn.jsdelivr.net/npm/library_x@1.2.3/dist/library_x.min.js" required>
+      </div>
+      <div class="ui-field">
+        <label class="ui-field__label" for="asset-name">Name <span style="color: var(--ui-on-surface-variant);">(optional — taken from the filename)</span></label>
+        <input class="ui-input" id="asset-name" type="text" placeholder="library_x">
+      </div>
+      <button class="ui-btn ui-btn--primary" type="submit">Rehost it</button>
+    </form>
+    <div class="ui-alert ui-alert--info mt-4" id="add-result" hidden></div>
+  </div>
+</div>
+
 <h2 class="text-lg font-semibold mb-3">Theme parity</h2>
 <div class="ui-alert {{ 'ui-alert--info' if parity.ok else 'ui-alert--error' }} mb-6">
   {% if parity.ok %}PASS — every main kit matches the schema ({{ parity.expected_count }} classes).{% else %}FAIL — a kit is missing or has extra classes.{% endif %}
@@ -27,19 +48,20 @@
 </div>
 
 <h2 class="text-lg font-semibold mb-3">Rehosted assets</h2>
+<div class="mb-3">
+  <button class="ui-btn ui-btn--outline" onclick="checkLatest(this)">Check for updates</button>
+</div>
 <div class="ui-card">
   <table class="ui-table ui-table--striped">
-    <thead><tr><th>Name</th><th>Current</th><th>Latest</th><th>Path</th><th></th></tr></thead>
+    <thead><tr><th>Name</th><th>Current</th><th>Latest</th><th>Use this URL</th><th></th></tr></thead>
     <tbody>
       {% for a in assets %}
       <tr>
         <td><code>{{ a.name }}</code></td>
         <td>{{ a.current_version }}</td>
-        <td>{{ a.latest_version or '—' }}</td>
-        <td><code>{{ a.path }}</code></td>
-        <td>
-          <button class="ui-btn ui-btn--outline" onclick="refreshAsset({{ a.id }}, this)">Refresh</button>
-        </td>
+        <td>{% if a.latest_version and a.latest_version != a.current_version %}<span class="ui-badge ui-badge--warn">{{ a.latest_version }}</span>{% else %}{{ a.latest_version or '—' }}{% endif %}</td>
+        <td><a href="/vendor/{{ a.path }}"><code>/vendor/{{ a.path }}</code></a></td>
+        <td><button class="ui-btn ui-btn--outline" onclick="refreshAsset({{ a.id }}, this)">Refresh</button></td>
       </tr>
       {% endfor %}
     </tbody>
@@ -47,17 +69,61 @@
 </div>
 
 <script>
-  async function refreshAsset(id, btn) {
-    btn.disabled = true;
-    btn.textContent = '…';
+  const MANAGE_TOKEN = "{{ manage_token }}";
+
+  function showResult(el, ok, message) {
+    el.hidden = false;
+    el.className = "ui-alert " + (ok ? "ui-alert--info" : "ui-alert--error") + " mt-4";
+    el.innerHTML = message;
+  }
+
+  async function addAsset(event) {
+    event.preventDefault();
+    const box = document.getElementById("add-result");
+    const url = document.getElementById("asset-url").value.trim();
+    const name = document.getElementById("asset-name").value.trim();
+    const btn = event.target.querySelector("button[type=submit]");
+    btn.disabled = true; btn.textContent = "Rehosting…";
     try {
-      const res = await fetch(`/api/assets/${id}/refresh`, { method: 'POST' });
+      const res = await fetch("/api/assets", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Manage-Token": MANAGE_TOKEN },
+        body: JSON.stringify({ upstream_url: url, name: name || null }),
+      });
       const body = await res.json();
-      if (!res.ok) throw new Error(body?.error?.message || res.statusText);
+      if (!res.ok) throw new Error(body?.error?.message || body?.detail || res.statusText);
+      showResult(box, true, "Added <code>" + body.name + "</code>. Use it at <code>" + location.origin + body.url + "</code>");
+      document.getElementById("add-asset").reset();
+    } catch (err) {
+      showResult(box, false, "Failed: " + err.message);
+    } finally {
+      btn.disabled = false; btn.textContent = "Rehost it";
+    }
+    return false;
+  }
+
+  async function checkLatest(btn) {
+    btn.disabled = true; btn.textContent = "Checking…";
+    try {
+      const res = await fetch("/api/assets/check", { method: "POST", headers: { "X-Manage-Token": MANAGE_TOKEN } });
+      if (!res.ok) throw new Error(res.statusText);
+      location.reload();
+    } catch (err) {
+      btn.disabled = false; btn.textContent = "Check for updates";
+      alert("Check failed: " + err.message);
+    }
+  }
+
+  async function refreshAsset(id, btn) {
+    btn.disabled = true; btn.textContent = '…';
+    try {
+      const res = await fetch(`/api/assets/${id}/refresh`, { method: 'POST', headers: { "X-Manage-Token": MANAGE_TOKEN } });
+      const body = await res.json();
+      if (!res.ok) throw new Error(body?.error?.message || body?.detail || res.statusText);
       btn.textContent = 'Done';
     } catch (err) {
-      console.error({ message: err.message, url: `/api/assets/${id}/refresh`, requestId: (await res?.headers?.get?.('X-Request-ID')) });
       btn.textContent = 'Failed';
+      alert("Refresh failed: " + err.message);
     }
   }
 </script>

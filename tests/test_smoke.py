@@ -52,3 +52,25 @@ def test_kit_served_with_cors(client):
 def test_manage_renders(client):
     resp = client.get("/manage")
     assert resp.status_code == 200
+
+
+def test_create_asset_requires_token(client):
+    resp = client.post("/api/assets", json={"upstream_url": "https://example.com/x.js"})
+    assert resp.status_code == 403
+
+
+def test_create_asset_rejects_non_http(client):
+    from apps.security import manage_token
+
+    resp = client.post(
+        "/api/assets",
+        json={"upstream_url": "ftp://example.com/x.js"},
+        headers={"X-Manage-Token": manage_token()},
+    )
+    assert resp.status_code == 400
+
+
+def test_asset_list_exposes_public_url(client):
+    resp = client.get("/api/assets")
+    assert resp.status_code == 200
+    assert all("url" in asset for asset in resp.json())
