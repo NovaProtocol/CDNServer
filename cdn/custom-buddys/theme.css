@@ -1,0 +1,273 @@
+/* custom-buddys — the Buddy's Freelance Project brand kit.
+   ======================================================
+   A project one-off on the CDN, excluded from the parity contract (`cdn/schema.json`)
+   like every `custom-*` kit. Buddy's is a festive Pahiyas-inspired marketing site, so
+   it owns its own warm palette and decorative patterns rather than the shared dark kit.
+
+   The palette is exposed twice: under the site's evocative names (used by the templates
+   and inline styles) and under the kit's `--ui-*` role aliases, so a future shared
+   component can tint itself from the same tokens. Served at
+   `/custom-buddys/theme.css`; the app's compiled Tailwind utilities load separately. */
+
+:root {
+    /* Site palette (evocative names). */
+    --fiesta-red: #C1272D;
+    --fiesta-red-dark: #8F1B20;
+    --sunflower-gold: #F7A325;
+    --sunflower-gold-light: #FFC85C;
+    --palay-gold: #D99E2B;
+    --leaf-green: #3E7C4F;
+    --leaf-green-light: #7BA05B;
+    --kiping-pink: #E85D8A;
+    --kiping-purple: #7A4E9E;
+    --banderita-blue: #2E6FB7;
+    --cream: #FFF8EC;
+    --cream-dark: #F7EBD3;
+    --brown: #3B2A20;
+    --brown-muted: #6B5647;
+    --white: #FFFFFF;
+
+    /* Kit role aliases (`--ui-*`). */
+    --ui-primary: var(--fiesta-red);
+    --ui-on-primary: var(--white);
+    --ui-surface: var(--cream);
+    --ui-on-surface: var(--brown);
+    --ui-surface-variant: var(--cream-dark);
+    --ui-on-surface-variant: var(--brown-muted);
+    --ui-outline: var(--cream-dark);
+    --ui-accent: var(--sunflower-gold);
+    --ui-radius: 14px;
+    --ui-duration: 300ms;
+    --ui-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ui-font-body: "Poppins", sans-serif;
+    --ui-font-display: "Playfair Display", serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream);
+    color: var(--brown);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+[x-cloak] {
+    display: none;
+}
+
+/* ---------- KIPING patterns (decorative rice wafers) ---------- */
+
+/* Subtle kiping / woven-texture background */
+.kiping-bg {
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(247, 163, 37, 0.12) 0, rgba(247, 163, 37, 0.12) 8px, transparent 9px),
+        radial-gradient(circle at 80% 70%, rgba(193, 39, 45, 0.10) 0, rgba(193, 39, 45, 0.10) 8px, transparent 9px),
+        linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+}
+
+/* Dense festival confetti texture */
+.confetti-bg {
+    background-image:
+        radial-gradient(circle at 15% 15%, rgba(193, 39, 45, 0.18) 0, rgba(193, 39, 45, 0.18) 6px, transparent 7px),
+        radial-gradient(circle at 85% 20%, rgba(247, 163, 37, 0.18) 0, rgba(247, 163, 37, 0.18) 5px, transparent 6px),
+        radial-gradient(circle at 50% 50%, rgba(62, 124, 79, 0.16) 0, rgba(62, 124, 79, 0.16) 6px, transparent 7px),
+        radial-gradient(circle at 25% 80%, rgba(232, 93, 138, 0.16) 0, rgba(232, 93, 138, 0.16) 5px, transparent 6px),
+        radial-gradient(circle at 70% 90%, rgba(46, 111, 183, 0.15) 0, rgba(46, 111, 183, 0.15) 6px, transparent 7px);
+    background-color: var(--cream);
+}
+
+/* ---------- BANDERITAS (festival flag banners) ---------- */
+
+.banderitas {
+    height: 18px;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            var(--fiesta-red) 0,
+            var(--fiesta-red) 14px,
+            var(--sunflower-gold) 14px,
+            var(--sunflower-gold) 28px,
+            var(--leaf-green) 28px,
+            var(--leaf-green) 42px,
+            var(--kiping-pink) 42px,
+            var(--kiping-pink) 56px,
+            var(--banderita-blue) 56px,
+            var(--banderita-blue) 70px,
+            var(--kiping-purple) 70px,
+            var(--kiping-purple) 84px
+        );
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+    opacity: 0.85;
+}
+
+/* Scalloped kiping edge (top of a section) */
+.kiping-edge {
+    position: relative;
+}
+.kiping-edge::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background-image: radial-gradient(circle at 50% 100%, transparent 0, transparent 12px, var(--cream) 13px);
+    background-size: 26px 14px;
+    background-position: center;
+    background-repeat: repeat-x;
+}
+
+/* ---------- Glass & cards ---------- */
+
+.glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 8px 32px rgba(59, 42, 32, 0.08);
+}
+
+.glass-light {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Gradients ---------- */
+
+.hero-gradient {
+    background: linear-gradient(135deg, #7E151B 0%, #C1272D 40%, #E2530E 75%, #F7A325 120%);
+}
+
+.hero-gradient-soft {
+    background: linear-gradient(160deg, #8F1B20 0%, #C1272D 45%, #D9550F 100%);
+}
+
+.sunburst {
+    background:
+        radial-gradient(circle at 50% 40%, rgba(247, 163, 37, 0.5) 0%, transparent 45%),
+        linear-gradient(135deg, #7E151B 0%, #C1272D 55%, #E2530F 110%);
+}
+
+/* ---------- Sunflower decoration ---------- */
+
+.sunflower-spin {
+    animation: spin 24s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+/* ---------- Custom scrollbar ---------- */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cream-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--fiesta-red), var(--sunflower-gold));
+    border-radius: 10px;
+}
+
+/* ---------- Typography accent ---------- */
+
+.text-shadow-hero {
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.festive-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Menu category anchor ---------- */
+
+[id^="cat-"] {
+    scroll-margin-top: 100px;
+}
+
+/* Sticky header state when scrolled */
+header.header-solid {
+    background: rgba(143, 27, 32, 0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Shared lift & shine micro-interactions ---------- */
+.lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(59, 42, 32, 0.14);
+}
+
+.shine {
+    position: relative;
+    overflow: hidden;
+}
+.shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+.shine:hover::after {
+    left: 150%;
+}
+
+/* Underline swoosh under headings */
+.swoosh {
+    position: relative;
+    display: inline-block;
+}
+.swoosh::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 60%;
+    height: 6px;
+    background-image: radial-gradient(circle at 50% 0, var(--sunflower-gold) 0 6px, transparent 7px);
+    background-size: 12px 6px;
+    opacity: 0.8;
+}
+
+/* Reveal-on-scroll animations. */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+[data-reveal="fade-up"] { transform: translateY(28px); }
+[data-reveal="fade-right"] { transform: translateX(-28px); }
+[data-reveal="fade-left"] { transform: translateX(28px); }
+[data-reveal="zoom-in"] { transform: scale(0.94); }
+[data-reveal].is-revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
