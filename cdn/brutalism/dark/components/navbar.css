@@ -2,6 +2,16 @@
    A fixed grid: [lead slot 28px] [brand] [spacer] [right]. The lead slot is
    always present (empty = invisible), so the brand lands on the same pixel
    whether or not a site has a leading button. */
+
+/* The shell must not depend on the app's reset. Every app but one gets
+   `box-sizing: border-box` from Tailwind's Preflight; a site without a Tailwind
+   build (NovaProtocol) fell back to content-box, which made this inner box 48px
+   too wide and put the brand 24px off every other site's. */
+.ui-navbar,
+.ui-navbar *,
+.ui-navbar *::before,
+.ui-navbar *::after { box-sizing: border-box; }
+
 .ui-navbar {
   position: sticky;
   top: 0;
@@ -18,7 +28,10 @@
   padding: 0 24px;
   height: 56px;
   display: grid;
-  grid-template-columns: 28px auto 1fr auto;
+  /* The right slot is `minmax(0, auto)`, not `auto`: it must be allowed to
+     shrink below its content so a wide links row scrolls instead of widening the
+     document (see the narrow-screen rule below). */
+  grid-template-columns: 28px auto 1fr minmax(0, auto);
   align-items: center;
   gap: 12px;
 }
@@ -51,6 +64,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 .ui-navbar__links {
   display: flex;
@@ -59,6 +73,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 .ui-navbar__link {
   font: 500 13px/1 var(--ui-font-body);
@@ -72,6 +87,22 @@
 .ui-navbar__link:hover {
   color: var(--ui-on-surface);
   background: color-mix(in srgb, var(--ui-on-surface) 6%, transparent);
+}
+/* Narrow screens: the links row scrolls inside the bar; it must not widen the
+   page. Without this every app that puts a links list in the right slot grew a
+   page-wide horizontal scrollbar on a phone (homelab +239px at 420px), while one
+   with a compact right slot escaped — the same header, different behaviour, from
+   nothing but its content. The toggle sits outside the scrolling row, so it
+   stays reachable. */
+@media (max-width: 720px) {
+  .ui-navbar__inner { padding: 0 12px; gap: 8px; }
+  .ui-navbar__links {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .ui-navbar__links::-webkit-scrollbar { display: none; }
+  .ui-navbar__link { padding: 8px 10px; }
 }
 /* Light/dark switch — the MELEReview switch, promoted to the shared shell. */
 .ui-theme-toggle {

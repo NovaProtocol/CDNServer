@@ -61,7 +61,7 @@ def build() -> int:
             for name, css in component_css.items():
                 (out / "components" / name).write_text(css)
 
-            imports = "".join(f"@import url('./components/{n}?v=4');\n" for n in components)
+            imports = "".join(f"@import url('./components/{n}?v=5');\n" for n in components)
             dark_css = (tokens_dir / "dark.css").read_text() if (tokens_dir / "dark.css").exists() else tokens.read_text()
             light_path = tokens_dir / "light.css"
             light_css = light_path.read_text() if light_path.exists() else ""

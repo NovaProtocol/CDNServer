@@ -1,4 +1,11 @@
 /* Canonical footer — same max-width, padding and type size on every site. */
+
+/* Same reason as the navbar: do not rely on the app's box-sizing reset. */
+.ui-footer,
+.ui-footer *,
+.ui-footer *::before,
+.ui-footer *::after { box-sizing: border-box; }
+
 .ui-footer { border-top: 1px solid var(--ui-outline); }
 .ui-footer__inner {
   max-width: 1100px;
