@@ -51,3 +51,7 @@ pytest                 # tests
 
 See `.env.example`. There is no `.env` file; values come from compose interpolation
 (`${VAR:?}`) or your shell. `/manage` is gated by GateKeeper, not by an app password.
+
+## License
+
+All rights reserved. See [LICENSE](LICENSE).
