@@ -110,6 +110,12 @@ select.form-control:not([size]):not([multiple]){padding:0.375rem 0.75rem}.form-c
 .btn-bill{background:#e94560;color:#fff;border:none;padding:.65rem 1.5rem;border-radius:50px;font-weight:600;font-size:.9rem;transition:all .3s;cursor:pointer}
 .btn-bill:hover{background:#d63851;box-shadow:0 4px 15px rgba(233,69,96,0.4);color:#fff}
 .btn-bill:disabled{opacity:.5;cursor:not-allowed}
+/* The landing page's outline CTA. It was defined by an inline <style> that the
+   move onto Tailwind and this kit removed, and only .btn-bill was re-supplied
+   here, so .btn-outline fell back to the bare Bootstrap .btn (grey, no hover). */
+.btn-outline{border:2px solid #e94560;color:#e94560;background:transparent;padding:.5rem 1.5rem;border-radius:50px;font-weight:600;font-size:.85rem;transition:all .3s;cursor:pointer}
+.btn-outline:hover{background:#e94560;color:#fff}
+.cta-section .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .btn-outline-bill{border:1px solid #e94560;color:#e94560;background:transparent;padding:.35rem 1rem;border-radius:50px;font-weight:600;font-size:.8rem;transition:all .3s}
 .btn-outline-bill:hover{background:#e94560;color:#fff}
 .btn-action-outline{background:transparent;border:1px solid #e94560;color:#e94560;border-radius:8px;padding:2px 10px;font-size:.78rem;transition:all .2s}
