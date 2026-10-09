@@ -7,7 +7,7 @@ def check_parity() -> dict:
     """Every main language/theme must expose exactly the canonical class set.
 
     A theme switch is a single <link> change, so a class missing in any kit would
-    silently unstyle a component at runtime — this is the guard against that.
+    silently unstyle a component at runtime, this is the guard against that.
     """
     expected = set(content.canonical_classes())
     results: dict[str, dict] = {}

@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
 
 
 def create_app() -> FastAPI:
-    """Build the application — called once by wsgi.py and once per test."""
+    """Build the application, called once by wsgi.py and once per test."""
     config = get_config()
 
     app = FastAPI(title="CDNServer", debug=config.debug, lifespan=lifespan)

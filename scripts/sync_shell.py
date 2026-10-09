@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Copy the canonical shared shell into every app that uses it.
 
-The shell is one file — `shell/base.html` in this repo — and each app gets a
+The shell is one file, `shell/base.html` in this repo, and each app gets a
 verbatim copy at `<templates>/_shell/base.html`, which its own thin `base.html`
 extends. Apps are separate repositories, so a copy plus this script is the only
 way to have one source of truth; run it whenever the shell changes and commit
@@ -32,7 +32,7 @@ TARGETS = {
 PROJECTS = Path("/projects")
 
 BANNER = (
-    "{# GENERATED — do not edit. Copied from CDNServer/shell/base.html by\n"
+    "{# GENERATED, do not edit. Copied from CDNServer/shell/base.html by\n"
     "   CDNServer/scripts/sync_shell.py. Edit the source and re-run the sync. #}\n"
 )
 

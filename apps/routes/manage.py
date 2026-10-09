@@ -16,7 +16,7 @@ router = APIRouter()
 @router.get("/manage", response_class=HTMLResponse)
 async def manage(request: Request) -> HTMLResponse:
     """Admin dashboard. The gate lives in GateKeeper (a custom_password rule on this
-    path) — the app is naked behind it and does no auth (reference/gatekeeper/)."""
+    path), the app is naked behind it and does no auth (reference/gatekeeper/)."""
     async with get_sessionmaker()() as session:
         assets = (await session.execute(select(Asset).order_by(Asset.name))).scalars().all()
     return templates.TemplateResponse(

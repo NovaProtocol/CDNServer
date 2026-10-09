@@ -14,7 +14,7 @@ router = APIRouter()
 
 @router.get("/health")
 async def health() -> dict[str, str]:
-    """Liveness probe — the one route Caddy proxies without a gate."""
+    """Liveness probe, the one route Caddy proxies without a gate."""
     return {"status": "ok"}
 
 

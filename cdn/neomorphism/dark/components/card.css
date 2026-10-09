@@ -1,4 +1,4 @@
-/* Card — surface + elevation, never a border. */
+/* Card, surface + elevation, never a border. */
 .ui-card {
   background: var(--ui-surface);
   color: var(--ui-on-surface);

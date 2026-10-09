@@ -34,7 +34,7 @@ class PermissiveCORSMiddleware(BaseHTTPMiddleware):
     """Public asset server: every response is fetchable from any origin.
 
     Starlette's CORSMiddleware only emits the header when the request carries an
-    Origin, which is wrong for a public CDN — a plain GET of a kit must always be
+    Origin, which is wrong for a public CDN, a plain GET of a kit must always be
     usable cross-origin."""
 
     _PREFLIGHT = {
@@ -70,7 +70,7 @@ class CacheControlMiddleware(BaseHTTPMiddleware):
     """One cache policy for every response.
 
     Debug caches nothing. In production an existing Cache-Control wins; otherwise the
-    path class decides — control plane is never cacheable, version-pinned content is
+    path class decides, control plane is never cacheable, version-pinned content is
     immutable, HTML is short-lived.
     """
 

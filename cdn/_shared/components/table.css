@@ -1,4 +1,4 @@
-/* Table — rows separated by dividers, header on surface-variant. */
+/* Table, rows separated by dividers, header on surface-variant. */
 .ui-table { width: 100%; border-collapse: collapse; font: 400 14px/20px var(--ui-font-body); color: var(--ui-on-surface); }
 .ui-table th {
   text-align: left;

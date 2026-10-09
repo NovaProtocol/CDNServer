@@ -14,7 +14,7 @@ Generated (committed, served at /<lang>/<theme>/…):
   cdn/<lang>/<theme>/manifest.json    component + class list (parity consumer)
 
 Every language shares the same component CSS, so the class set is identical by
-construction — the design language lives entirely in the tokens + flavor.
+construction, the design language lives entirely in the tokens + flavor.
 """
 from __future__ import annotations
 
@@ -89,7 +89,7 @@ def build() -> int:
             status = "OK" if not missing and not extra else f"MISMATCH missing={sorted(missing)} extra={sorted(extra)}"
             if missing or extra:
                 failures += 1
-            print(f"  {language}/{theme}: {len(components)} components, {len(classes)} classes — {status}")
+            print(f"  {language}/{theme}: {len(components)} components, {len(classes)} classes, {status}")
 
     if failures:
         print(f"parity FAILED for {failures} kit(s)")

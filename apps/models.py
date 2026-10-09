@@ -13,7 +13,7 @@ class Base(DeclarativeBase):
 class Asset(Base):
     """A rehosted third-party asset.
 
-    VARCHAR only — never a TEXT column here, so `server_default` is safe (MySQL 8.4
+    VARCHAR only, never a TEXT column here, so `server_default` is safe (MySQL 8.4
     rejects DEFAULT on TEXT/BLOB; see reference/docker/mysql.md).
     """
 

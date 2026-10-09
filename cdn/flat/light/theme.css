@@ -64,7 +64,7 @@
   --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* Flat flavor — flat fills, one soft shadow, no state-layer tricks. */
+/* Flat flavor, flat fills, one soft shadow, no state-layer tricks. */
 .ui-btn--primary { box-shadow: var(--ui-elev-1); }
 .ui-card { box-shadow: var(--ui-elev-1); }
 

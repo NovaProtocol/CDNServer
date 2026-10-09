@@ -1,4 +1,4 @@
-/* Button — theme-neutral: every value resolves through --ui-* tokens. */
+/* Button, theme-neutral: every value resolves through --ui-* tokens. */
 .ui-btn {
   display: inline-flex;
   align-items: center;

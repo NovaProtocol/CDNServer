@@ -1,4 +1,4 @@
-/* Canonical footer — same max-width, padding and type size on every site. */
+/* Canonical footer, same max-width, padding and type size on every site. */
 
 /* Same reason as the navbar: do not rely on the app's box-sizing reset. */
 .ui-footer,

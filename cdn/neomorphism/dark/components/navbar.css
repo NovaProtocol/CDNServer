@@ -1,4 +1,4 @@
-/* Canonical top navigation — IDENTICAL geometry on every site.
+/* Canonical top navigation, IDENTICAL geometry on every site.
    A fixed grid: [lead slot 28px] [brand] [spacer] [right]. The lead slot is
    always present (empty = invisible), so the brand lands on the same pixel
    whether or not a site has a leading button. */
@@ -91,7 +91,7 @@
 /* Narrow screens: the links row scrolls inside the bar; it must not widen the
    page. Without this every app that puts a links list in the right slot grew a
    page-wide horizontal scrollbar on a phone (homelab +239px at 420px), while one
-   with a compact right slot escaped — the same header, different behaviour, from
+   with a compact right slot escaped, the same header, different behaviour, from
    nothing but its content. The toggle sits outside the scrolling row, so it
    stays reachable. */
 @media (max-width: 720px) {
@@ -104,7 +104,7 @@
   .ui-navbar__links::-webkit-scrollbar { display: none; }
   .ui-navbar__link { padding: 8px 10px; }
 }
-/* Light/dark switch — the MELEReview switch, promoted to the shared shell. */
+/* Light/dark switch, the MELEReview switch, promoted to the shared shell. */
 .ui-theme-toggle {
   position: relative;
   width: 46px;

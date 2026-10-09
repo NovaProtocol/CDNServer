@@ -13,7 +13,7 @@ def manage_token() -> str:
 
     Mutating API routes require it in `X-Manage-Token`. The page itself is behind the
     GateKeeper `custom_password` rule, so only an unlocked session ever receives the
-    token — this is what keeps `/api/*` from being an open, unauthenticated write
+    token, this is what keeps `/api/*` from being an open, unauthenticated write
     surface (it is otherwise public behind the gate)."""
     key = get_config().SECRET_KEY.encode()
     return hmac.new(key, b"cdn-manage-v1", hashlib.sha256).hexdigest()

@@ -1,4 +1,4 @@
-/* Neomorphism flavor — soft extruded plastic: no borders, dual shadows, pressed inputs. */
+/* Neomorphism flavor, soft extruded plastic: no borders, dual shadows, pressed inputs. */
 .ui-card { border: none; box-shadow: var(--ui-elev-2); }
 .ui-btn { border: none; box-shadow: var(--ui-elev-1); }
 .ui-btn:active { box-shadow: inset var(--ui-elev-1); }

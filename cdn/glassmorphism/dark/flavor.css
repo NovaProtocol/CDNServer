@@ -1,4 +1,4 @@
-/* Glassmorphism flavor — frosted translucent surfaces + backdrop blur. */
+/* Glassmorphism flavor, frosted translucent surfaces + backdrop blur. */
 .ui-card {
   background: color-mix(in srgb, var(--ui-surface) 60%, transparent);
   backdrop-filter: blur(14px);

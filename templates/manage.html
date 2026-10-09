@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}CDNServer — manage{% endblock %}
+{% block title %}CDNServer, manage{% endblock %}
 {% block content %}
 <h1 class="text-2xl font-bold mb-2">Manage</h1>
 <p class="mb-8 text-sm" style="color: var(--ui-on-surface-variant);">
@@ -8,7 +8,7 @@
 
 <h2 class="text-lg font-semibold mb-3">Add an asset</h2>
 <p class="mb-3 text-sm" style="color: var(--ui-on-surface-variant);">
-  Paste any JS/CSS/font URL — it is rehosted here and you get a stable link to use from your other projects.
+  Paste any JS/CSS/font URL, it is rehosted here and you get a stable link to use from your other projects.
 </p>
 <div class="ui-card mb-10">
   <div class="ui-card__body">
@@ -18,7 +18,7 @@
         <input class="ui-input" id="asset-url" type="url" placeholder="https://cdn.jsdelivr.net/npm/library_x@1.2.3/dist/library_x.min.js" required>
       </div>
       <div class="ui-field">
-        <label class="ui-field__label" for="asset-name">Name <span style="color: var(--ui-on-surface-variant);">(optional — taken from the filename)</span></label>
+        <label class="ui-field__label" for="asset-name">Name <span style="color: var(--ui-on-surface-variant);">(optional, taken from the filename)</span></label>
         <input class="ui-input" id="asset-name" type="text" placeholder="library_x">
       </div>
       <button class="ui-btn ui-btn--primary" type="submit">Rehost it</button>
@@ -29,7 +29,7 @@
 
 <h2 class="text-lg font-semibold mb-3">Theme parity</h2>
 <div class="ui-alert {{ 'ui-alert--info' if parity.ok else 'ui-alert--error' }} mb-6">
-  {% if parity.ok %}PASS — every main kit matches the schema ({{ parity.expected_count }} classes).{% else %}FAIL — a kit is missing or has extra classes.{% endif %}
+  {% if parity.ok %}PASS, every main kit matches the schema ({{ parity.expected_count }} classes).{% else %}FAIL, a kit is missing or has extra classes.{% endif %}
 </div>
 <div class="ui-card mb-10">
   <table class="ui-table">
@@ -38,9 +38,9 @@
       {% for kit, r in parity.results.items() %}
       <tr>
         <td><code>{{ kit }}</code></td>
-        <td>{{ r.components if r.components is defined else '—' }}</td>
-        <td>{{ r.missing | join(', ') if r.missing else '—' }}</td>
-        <td>{{ r.extra | join(', ') if r.extra else '—' }}</td>
+        <td>{{ r.components if r.components is defined else '-' }}</td>
+        <td>{{ r.missing | join(', ') if r.missing else '-' }}</td>
+        <td>{{ r.extra | join(', ') if r.extra else '-' }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -59,7 +59,7 @@
       <tr>
         <td><code>{{ a.name }}</code></td>
         <td>{{ a.current_version }}</td>
-        <td>{% if a.latest_version and a.latest_version != a.current_version %}<span class="ui-badge ui-badge--warn">{{ a.latest_version }}</span>{% else %}{{ a.latest_version or '—' }}{% endif %}</td>
+        <td>{% if a.latest_version and a.latest_version != a.current_version %}<span class="ui-badge ui-badge--warn">{{ a.latest_version }}</span>{% else %}{{ a.latest_version or '-' }}{% endif %}</td>
         <td><a href="/vendor/{{ a.path }}"><code>/vendor/{{ a.path }}</code></a></td>
         <td><button class="ui-btn ui-btn--outline" onclick="refreshAsset({{ a.id }}, this)">Refresh</button></td>
       </tr>

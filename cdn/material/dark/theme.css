@@ -64,7 +64,7 @@
   --ui-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* Material flavor — state layers on primary actions (degrades without JS). */
+/* Material flavor, state layers on primary actions (degrades without JS). */
 .ui-btn--primary { position: relative; overflow: hidden; }
 .ui-btn--primary::after {
   content: "";
