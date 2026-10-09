@@ -1,0 +1,47 @@
+/* Banner, a full-width sticky notice strip that sits directly under the shared
+   navbar (top: 56px). Theme-neutral: every value resolves through a --ui-* token,
+   so the fill and the text move together under the light/dark switch. Never pin a
+   literal fill here, because a dark fill under a token text colour leaves the
+   notice unreadable in the other theme, which is the defect this component
+   replaces. */
+
+/* Same reason as the navbar/footer: do not rely on the app's box-sizing reset. */
+.ui-banner,
+.ui-banner *,
+.ui-banner *::before,
+.ui-banner *::after { box-sizing: border-box; }
+
+.ui-banner {
+  position: sticky;
+  /* The shared navbar is 56px; the strip tucks under it while scrolling. */
+  top: 56px;
+  z-index: 40;
+  background: color-mix(in srgb, var(--ui-surface) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ui-outline);
+  color: var(--ui-on-surface-variant);
+  font: 400 12px/18px var(--ui-font-body);
+  letter-spacing: .02em;
+}
+.ui-banner__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 9px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ui-banner__icon { flex: 0 0 auto; width: 15px; height: 15px; color: var(--ui-primary); }
+.ui-banner svg { flex: 0 0 auto; width: 15px; height: 15px; }
+
+.ui-banner--info { background: var(--ui-primary-container); color: var(--ui-on-primary-container); }
+.ui-banner--info .ui-banner__icon { color: var(--ui-primary); }
+.ui-banner--warn { background: color-mix(in srgb, var(--ui-warning) 16%, var(--ui-surface)); color: var(--ui-on-surface); }
+.ui-banner--warn .ui-banner__icon { color: var(--ui-warning); }
+.ui-banner--danger { background: color-mix(in srgb, var(--ui-error) 16%, var(--ui-surface)); color: var(--ui-on-surface); }
+.ui-banner--danger .ui-banner__icon { color: var(--ui-error); }
+
+@media (max-width: 720px) {
+  .ui-banner__inner { padding: 9px 12px; }
+}
