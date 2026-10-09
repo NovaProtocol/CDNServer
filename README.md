@@ -1,11 +1,11 @@
 # CDNServer
 
-Shared design-language asset server for the projectnova stack — one source of truth for
+Shared design-language asset server for the projectnova stack, one source of truth for
 front-end component CSS and rehosted third-party assets.
 
 **Stack:** Python 3.14 + FastAPI + Granian · MySQL 8.4 · Caddy gateway · MkDocs docs
 **Host:** `https://cdn.projectnova.download/`  ·  **Stack:** `cdn` (Dockhand env 4)
-**Design language:** n/a — this is the kit server; it dogfoods `material`.
+**Design language:** none. This is the kit server, and it dogfoods `material`.
 
 ## What it serves
 
@@ -27,7 +27,7 @@ switch is a single `<link>` change.
 ## How it works
 
 `caddy` (`:7080`) is the entry point and fans out by path to `cdn_main` and `cdn_documentation`
-over the compose network. Gating happens in GateKeeper, not here — the local `Caddyfile` carries
+over the compose network. Gating happens in GateKeeper, not here. The local `Caddyfile` carries
 zero `forward_auth`. The app is "naked behind the gate": no auth code.
 
 ## Quick Start
