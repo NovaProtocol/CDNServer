@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,6 +9,8 @@ import httpx
 
 from apps.config import CDN_ROOT, VENDOR_DIR
 from apps.models import Asset
+
+logger = logging.getLogger("cdn")
 
 
 def _store_path(asset: Asset, filename: str) -> Path:
@@ -33,15 +36,30 @@ async def refresh_asset(asset: Asset) -> str:
     return asset.path
 
 
-async def seed_vendor() -> None:
-    """Populate the writable vendor dir from the baked image on first boot."""
+async def seed_vendor(assets: list[Asset] | None = None) -> None:
+    """Make sure every registered asset exists on disk.
+
+    The writable volume starts empty and the image carries no baked copies, so
+    seeding from `CDN_ROOT/vendor` alone left every `/vendor/...` path answering
+    404 while the index page advertised it. After the copy (when a baked tree
+    does exist) any asset whose file is missing is fetched from its upstream,
+    so a fresh volume serves what the database says it serves."""
     baked = CDN_ROOT / "vendor"
     VENDOR_DIR.mkdir(parents=True, exist_ok=True)
-    if not baked.exists() or any(VENDOR_DIR.iterdir()):
-        return
-    import shutil
+    if baked.exists() and not any(VENDOR_DIR.iterdir()):
+        import shutil
 
-    shutil.copytree(baked, VENDOR_DIR, dirs_exist_ok=True)
+        shutil.copytree(baked, VENDOR_DIR, dirs_exist_ok=True)
+    if not assets:
+        return
+    for asset in assets:
+        dest = VENDOR_DIR / asset.path if asset.path else None
+        if dest is not None and dest.is_file():
+            continue
+        try:
+            await refresh_asset(asset)
+        except Exception:
+            logger.exception("vendor seed failed for %s", asset.name)
 
 
 _NPM = re.compile(r"cdn\.jsdelivr\.net/npm/((?:@[^/]+/)?[^/@]+)@([^/]+)", re.I)

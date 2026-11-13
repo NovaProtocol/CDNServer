@@ -13,11 +13,17 @@ from apps.middleware import CacheControlMiddleware, PermissiveCORSMiddleware, Re
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     from apps.bootstrap import init_schema, seed_assets
+    from apps.db import get_sessionmaker
+    from apps.models import Asset
     from apps.rehost import seed_vendor
+    from sqlalchemy import select
 
     await init_schema()
     await seed_assets()
-    await seed_vendor()
+    async with get_sessionmaker()() as session:
+        assets = (await session.execute(select(Asset))).scalars().all()
+        await seed_vendor(assets)
+        await session.commit()
     yield
 
 
