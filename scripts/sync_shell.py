@@ -24,7 +24,7 @@ TARGETS = {
     "TurfOps": "templates",
     "GateKeeper": "management/templates",
     "SolveSpace": "shared/templates",
-    "MELEReviewSite": "web/templates",
+    "MELEReviewSite": "app/templates",
     "NovaProtocol": "templates",
     "ServerDashboard": "dashboard/templates",
     "CDNServer": "templates",
